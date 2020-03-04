@@ -6,11 +6,23 @@
   "repository": "git@github.com:chaika-design/useDebounceCallback.git",
   "author": "KiKiKi <chaika.design@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "format": "prettier --check \"src/**/*.{js,ts}\"",
+    "format:w": "prettier --write \"src/**/*.{js,ts}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
-    "jest": "^24.9.0"
+    "husky": "^4.2.3",
+    "jest": "^24.9.0",
+    "prettier": "1.19.1",
+    "pretty-quick": "^2.0.1"
   },
   "dependencies": {
     "react": "^16.12.0",
