@@ -1,11 +1,19 @@
 {
-  "name": "use-debounce-callback",
+  "name": "use-debounce-hooks",
   "version": "1.0.0",
   "description": "react custom hook",
-  "main": "src/useDebounceCallback.js",
-  "repository": "git@github.com:chaika-design/useDebounceCallback.git",
-  "author": "KiKiKi <chaika.design@gmail.com>",
+  "main": "src/index.js",
+  "repository": "git@github.com:chaika-design/useDebounceHooks.git",
+  "author": "KiKiKi KiKi <https://twitter.com/KiKiKi_KiKi>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chaika-design/useDebounceHooks/issues"
+  },
+  "keywords": [
+    "react",
+    "react-hook",
+    "debounce"
+  ],
   "scripts": {
     "build": "yarn test && yarn format && yarn lint",
     "test": "jest",
