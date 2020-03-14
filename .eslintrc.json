@@ -11,6 +11,8 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "space-before-function-paren": 0,
+    "@typescript-eslint/indent": 0,
+    "@typescript-eslint/no-explicit-any": 0,
     "semi": ["error", "always"],
     "object-shorthand": ["error", "always", { "avoidQuotes": true }]
   }
