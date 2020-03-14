@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import useDebounceCallback from '../../useDebounceCallback';
+import useDebounceCallback from '../src/useDebounceCallback';
 
 jest.useFakeTimers();
 
