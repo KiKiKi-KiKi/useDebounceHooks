@@ -5,7 +5,11 @@ import useDebounce from '../src/useDebounce';
 
 jest.useFakeTimers();
 
-function Component({ text }) {
+type Props = {
+  text: any;
+}
+
+function Component({ text }: Props) {
   const [value, setValue] = useDebounce(text, 1000);
   return (
     <div onClick={() => setValue(`${value} World!`)}>

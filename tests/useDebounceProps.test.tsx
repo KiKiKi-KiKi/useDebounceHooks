@@ -5,7 +5,11 @@ import useDebouncProps from '../src/useDebounceProps';
 
 jest.useFakeTimers();
 
-function Component({ text }) {
+type Props = {
+  text: any;
+};
+
+function Component({ text }: Props) {
   const [value] = useDebouncProps(text, 1000);
   return (
     <div>{value}</div>
