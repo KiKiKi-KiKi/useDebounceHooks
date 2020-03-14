@@ -33,6 +33,9 @@
     }
   },
   "devDependencies": {
+    "@types/node": "^13.9.1",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
     "enzyme": "^3.11.0",
