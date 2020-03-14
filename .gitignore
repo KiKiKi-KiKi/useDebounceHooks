@@ -1,6 +1,8 @@
 # dependencies
 /node_modules
 /build
+/dist-cjs
+/dist-esm
 
 # misc
 .DS_Store

@@ -2,7 +2,9 @@
   "name": "use-debounce-hooks",
   "version": "1.0.0",
   "description": "react custom hook",
-  "main": "src/index.js",
+  "main": "src/index.ts",
+  "module": "dist-esm/index.js",
+  "types": "dist-cjs/index.d.ts",
   "repository": "git@github.com:chaika-design/useDebounceHooks.git",
   "author": "KiKiKi KiKi <https://twitter.com/KiKiKi_KiKi>",
   "license": "MIT",
@@ -15,10 +17,13 @@
     "debounce"
   ],
   "scripts": {
-    "build": "yarn test && yarn format && yarn lint",
+    "build": "npm-run-all -s build:cjs build:esm",
+    "build:cjs": "tsc --project . --module commonjs --outDir ./dist-cjs",
+    "build:esm": "tsc --project . --module esNext --outDir ./dist-esm",
     "test": "jest",
     "test:w": "jest --watch",
     "lint": "eslint \"src/**/*.{js,ts}\"",
+    "fix": "eslint --fix \"src/**/*.{js,ts}\"",
     "format": "prettier --check \"src/**/*.{js,ts}\"",
     "format:w": "prettier --write \"src/**/*.{js,ts}\""
   },
