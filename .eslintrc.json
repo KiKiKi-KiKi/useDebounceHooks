@@ -10,7 +10,7 @@
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
-    "space-before-function-paren": ["error", "never"],
+    "space-before-function-paren": 0,
     "semi": ["error", "always"],
     "object-shorthand": ["error", "always", { "avoidQuotes": true }]
   }
