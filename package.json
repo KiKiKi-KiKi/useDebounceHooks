@@ -2,7 +2,7 @@
   "name": "use-debounce-hooks",
   "version": "1.0.0",
   "description": "react custom hook",
-  "main": "src/index.ts",
+  "main": "dist-cjs/index.js",
   "module": "dist-esm/index.js",
   "types": "dist-cjs/index.d.ts",
   "repository": "git@github.com:chaika-design/useDebounceHooks.git",
