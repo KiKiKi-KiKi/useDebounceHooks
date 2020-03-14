@@ -2,13 +2,16 @@ import { useState, useCallback, useRef } from 'react';
 
 const DefaultDelayTime = 300;
 
-export default function useDebounce(initValue = null, delay = DefaultDelayTime) {
+export default function useDebounce<T>(
+  initValue: T | undefined,
+  delay: number = DefaultDelayTime
+): [T | undefined, () => void] {
   const [val, setVal] = useState(initValue);
-  const debounceTimer = useRef(null);
+  const debounceTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
 
   const dispatch = useCallback(
-    (value) => {
-      clearTimeout(debounceTimer.current);
+    (value?: T) => {
+      debounceTimer.current && clearTimeout(debounceTimer.current);
       debounceTimer.current = setTimeout(() => {
         setVal(value);
       }, delay);
