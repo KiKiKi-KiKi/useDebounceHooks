@@ -5,7 +5,7 @@ const DefaultDelayTime = 300;
 export default function useDebounce<T>(
   initValue: T | undefined,
   delay: number = DefaultDelayTime
-): [T | undefined, (arg?: T) => void] {
+): [T | undefined, (arg?: T) => void, () => void] {
   const [val, setVal] = useState(initValue);
   const debounceTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
 
@@ -19,5 +19,9 @@ export default function useDebounce<T>(
     [delay, debounceTimer]
   );
 
-  return [val, dispatch];
+  const cancel = useCallback(() => {
+    debounceTimer.current && clearTimeout(debounceTimer.current);
+  }, [debounceTimer]);
+
+  return [val, dispatch, cancel];
 }

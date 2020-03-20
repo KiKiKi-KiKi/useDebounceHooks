@@ -6,7 +6,7 @@ export default function useDebounceCallback<T extends (...args: any[]) => any>(
   callback: T,
   delay: number = DefaultDelayTime,
   initiValue?: any
-): [ReturnType<T> | undefined, (...args: any[]) => void] {
+): [ReturnType<T> | undefined, (...args: any[]) => void, () => void] {
   const [val, setVal] = useState<ReturnType<T> | undefined>(initiValue);
   const debounceTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
 
@@ -20,5 +20,9 @@ export default function useDebounceCallback<T extends (...args: any[]) => any>(
     [callback, delay, debounceTimer]
   );
 
-  return [val, dispatch];
+  const cancel = useCallback(() => {
+    debounceTimer.current && clearTimeout(debounceTimer.current);
+  }, [debounceTimer]);
+
+  return [val, dispatch, cancel];
 }
