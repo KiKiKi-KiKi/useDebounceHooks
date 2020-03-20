@@ -11,9 +11,7 @@ type Props = {
 
 function Component({ text }: Props) {
   const [value] = useDebouncProps(text, 1000);
-  return (
-    <div>{value}</div>
-  );
+  return <div>{value}</div>;
 }
 
 describe('useDebounceProps Hook', () => {
@@ -44,5 +42,35 @@ describe('useDebounceProps Hook', () => {
     });
     // after Debounce Timer ended, update text
     expect(component.text()).toBe('Hi, World!');
+  });
+
+  test('cancel to debouce update', () => {
+    function Component({ text }: Props) {
+      const [value, cancel] = useDebouncProps(text, 1000);
+      return <div onClick={() => cancel()}>{value}</div>;
+    }
+
+    const component = mount(<Component text="Hi" />);
+    expect(component.text()).toBe('Hi');
+
+    // update props
+    act(() => {
+      component.setProps({ text: 'Hello!' });
+    });
+
+    // timer
+    act(() => {
+      jest.setTimeout(500);
+    });
+    // before debounce Timer end
+    expect(component.text()).toBe('Hi');
+
+    // cancel event
+    act(() => {
+      component.simulate('click');
+      jest.runAllTimers();
+    });
+    // after debouce Timer ended.
+    expect(component.text()).toBe('Hi');
   });
 });

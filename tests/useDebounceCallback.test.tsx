@@ -89,4 +89,45 @@ describe('useDebounceCallback Hook', () => {
     expect(callback).toHaveBeenCalled();
     expect(component.text()).toBe('5');
   });
+
+  test('cancel to debouce update', () => {
+    const callback = jest.fn((val) => val);
+    function Component() {
+      const [value, setValue, cancel] = useDebounceCallback(callback, 1000, 'Hello');
+      return (
+        <div>
+          <span>{value}</span>
+          <button className="update" onClick={() => setValue(`${value} World!`)}>
+            UPDATE
+          </button>
+          <button className="cancel" onClick={() => cancel()}>
+            CANCEL
+          </button>
+        </div>
+      );
+    }
+
+    const component = mount(<Component />);
+    expect(component.find('span').text()).toBe('Hello');
+
+    // update
+    act(() => {
+      component.find('.update').simulate('click');
+    });
+    expect(component.find('span').text()).toBe('Hello');
+
+    // timer
+    act(() => {
+      jest.setTimeout(500);
+    });
+    // before debounce Timer end
+    expect(component.find('span').text()).toBe('Hello');
+
+    // cacncel event
+    act(() => {
+      component.find('.cancel').simulate('click');
+      jest.runAllTimers();
+    });
+    expect(component.find('span').text()).toBe('Hello');
+  });
 });

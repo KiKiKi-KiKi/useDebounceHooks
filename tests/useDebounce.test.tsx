@@ -7,15 +7,11 @@ jest.useFakeTimers();
 
 type Props = {
   text: any;
-}
+};
 
 function Component({ text }: Props) {
   const [value, setValue] = useDebounce(text, 1000);
-  return (
-    <div onClick={() => setValue(`${value} World!`)}>
-      {value}
-    </div>
-  );
+  return <div onClick={() => setValue(`${value} World!`)}>{value}</div>;
 }
 
 describe('useDebounce Hook', () => {
@@ -39,5 +35,45 @@ describe('useDebounce Hook', () => {
     });
     // after Debounce Timer ended, update text
     expect(component.text()).toBe('Hello World!');
+  });
+
+  test('cancel to debouce update', () => {
+    function Component({ text }: Props) {
+      const [value, setValue, cancel] = useDebounce(text, 1000);
+      return (
+        <div>
+          <span>{value}</span>
+          <button className="update" onClick={() => setValue(`${value} World!`)}>
+            UPDATE
+          </button>
+          <button className="cancel" onClick={() => cancel()}>
+            CANCEL
+          </button>
+        </div>
+      );
+    }
+
+    const component = mount(<Component text="Hello" />);
+    expect(component.find('span').text()).toBe('Hello');
+
+    // update
+    act(() => {
+      component.find('.update').simulate('click');
+    });
+    expect(component.find('span').text()).toBe('Hello');
+
+    // timer
+    act(() => {
+      jest.setTimeout(500);
+    });
+    // before debounce Timer end
+    expect(component.find('span').text()).toBe('Hello');
+
+    // cacncel event
+    act(() => {
+      component.find('.cancel').simulate('click');
+      jest.runAllTimers();
+    });
+    expect(component.find('span').text()).toBe('Hello');
   });
 });
