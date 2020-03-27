@@ -1,7 +1,9 @@
 # useDebounceHooks
 
-[![Build Status](https://travis-ci.org/chaika-design/useDebounceHooks.svg?branch=master)](https://travis-ci.org/chaika-design/useDebounceHooks) 
-[![Coverage Status](https://coveralls.io/repos/github/chaika-design/useDebounceHooks/badge.svg?branch=master)](https://coveralls.io/github/chaika-design/useDebounceHooks?branch=master)
+[![NPM version](https://badgen.net/npm/v/use-debounce-hooks)](https://www.npmjs.com/package/use-debounce-hooks)
+[![Build Status](https://travis-ci.org/KiKiKi-KiKi/useDebounceHooks.svg?branch=master)](https://travis-ci.org/KiKiKi-KiKi/useDebounceHooks) 
+[![Coverage Status](https://coveralls.io/repos/github/KiKiKi-KiKi/useDebounceHooks/badge.svg?branch=master)](https://coveralls.io/github/KiKiKi-KiKi/useDebounceHooks?branch=master)
+[![MIT License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/KiKiKi-KiKi/useDebounceHooks/blob/master/package.json)
 
 
 React custom hook

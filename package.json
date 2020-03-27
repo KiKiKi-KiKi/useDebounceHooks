@@ -1,15 +1,15 @@
 {
   "name": "use-debounce-hooks",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "React custom hook of update state by debounce.",
   "main": "dist-cjs/index.js",
   "module": "dist-esm/index.js",
   "types": "dist-cjs/index.d.ts",
-  "repository": "git@github.com:chaika-design/useDebounceHooks.git",
+  "repository": "git@github.com:KiKiKi-KiKi/useDebounceHooks.git",
   "author": "KiKiKi KiKi <https://twitter.com/KiKiKi_KiKi>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chaika-design/useDebounceHooks/issues"
+    "url": "https://github.com/KiKiKi-KiKi/useDebounceHooks/issues"
   },
   "keywords": [
     "react",
