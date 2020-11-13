@@ -8,12 +8,12 @@ export default function useDebouncePeops<T>(
 ): [T | undefined, () => void] {
   const [val, setVal] = useState<T | undefined>(value);
   const prevValueRef: { current: T | undefined } = useRef(val);
-  const debounceTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
+  const debounceTimer = useRef<ReturnType<typeof global.setTimeout> | null>(null);
 
   const dispatch = useCallback(
     (value?: T) => {
       debounceTimer.current && clearTimeout(debounceTimer.current);
-      debounceTimer.current = setTimeout(() => {
+      debounceTimer.current = window.setTimeout(() => {
         setVal((prevVal: T | undefined) => {
           prevValueRef.current = prevVal;
           return value;
